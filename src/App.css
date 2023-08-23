@@ -4,7 +4,7 @@
   margin: 0 auto; /* 상하 여백 0, 좌우 여백 자동 조절 */
   box-sizing: border-box; /* 내부 여백이 요소의 크기에 영향 미치지 않도록 설정 */
   padding: 20px; /* 내부 여백 */
-  border: 1px solid gray; /* 경계선 1px 실선 회색 */
+  /* border: 1px solid gray; 경계선 1px 실선 회색 */
   display: flex; /* 수평 배치 */
   flex-direction: column; /* 자식 요소 수직 배치 */
   gap: 30px; /* 자식 요소 간 여백 */
