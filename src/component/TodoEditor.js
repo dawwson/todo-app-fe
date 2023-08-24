@@ -17,6 +17,15 @@ const TodoEditor = (props) => {
       return inputRef.current.focus();
     }
     onCreate(content);
+    // 입력값 초기화
+    setContent("");
+  };
+
+  const handleOnKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      // 엔터 입력 시 할 일 추가
+      handleOnClickButton();
+    }
   };
 
   return (
@@ -28,6 +37,7 @@ const TodoEditor = (props) => {
           placeholder="새로운 Todo..."
           value={content}
           onChange={handleOnChangeInput}
+          onKeyDown={handleOnKeyDown}
         />
         <button onClick={handleOnClickButton}>추가</button>
       </div>
