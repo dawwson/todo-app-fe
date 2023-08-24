@@ -45,7 +45,7 @@ function App() {
     <div className="App">
       <Header />
       <TodoEditor onCreate={handleOnCreate} />
-      <TodoList />
+      <TodoList items={todo} />
     </div>
   );
 }
