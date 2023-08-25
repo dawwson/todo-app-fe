@@ -1,10 +1,15 @@
 import "./TodoItem.css";
 
 const TodoItem = (props) => {
-  const { id, isDone, content, createdAt, onChangeCheckbox } = props;
+  const { id, isDone, content, createdAt, onChangeCheckbox, onClickDelete } =
+    props;
 
   const handleOnChangeCheckbox = () => {
     onChangeCheckbox(id);
+  };
+
+  const handleOnClickDelete = () => {
+    onClickDelete(id);
   };
 
   return (
@@ -19,7 +24,7 @@ const TodoItem = (props) => {
       <div className="title_col">{content}</div>
       <div className="date_col">{new Date(createdAt).toLocaleDateString()}</div>
       <div className="btn_col">
-        <button>삭제</button>
+        <button onClick={handleOnClickDelete}>삭제</button>
       </div>
     </div>
   );
