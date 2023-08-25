@@ -26,7 +26,7 @@ const mockData = [
 ];
 
 function App() {
-  const [todo, setTodo] = useState(mockData);
+  const [todos, setTodo] = useState(mockData);
   const idRef = useRef(4);
 
   const handleOnCreate = (content) => {
@@ -37,15 +37,25 @@ function App() {
       createdAt: new Date().getTime(),
     };
 
-    setTodo([...todo, newItem]);
+    setTodo([...todos, newItem]);
     idRef.current += 1;
+  };
+
+  const handleOnChangeCheckbox = (targetId) => {
+    const updatedTodo = todos.map((todo) => {
+      if (todo.id === targetId) {
+        return { ...todo, isDone: !todo.isDone };
+      }
+      return todo;
+    });
+    setTodo(updatedTodo);
   };
 
   return (
     <div className="App">
       <Header />
       <TodoEditor onCreate={handleOnCreate} />
-      <TodoList items={todo} />
+      <TodoList items={todos} onChangeCheckbox={handleOnChangeCheckbox} />
     </div>
   );
 }

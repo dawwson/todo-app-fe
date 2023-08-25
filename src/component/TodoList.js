@@ -2,7 +2,7 @@ import { useState } from "react";
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
 
-const TodoList = ({ items }) => {
+const TodoList = ({ items, onChangeCheckbox }) => {
   const [search, setSearch] = useState("");
 
   const handleOnChangeSearch = (e) => {
@@ -29,7 +29,11 @@ const TodoList = ({ items }) => {
       />
       <div className="list_wrapper">
         {getSearchResult().map((item) => (
-          <TodoItem key={item.id} {...item} />
+          <TodoItem
+            key={item.id}
+            {...item}
+            onChangeCheckbox={onChangeCheckbox}
+          />
         ))}
       </div>
     </div>

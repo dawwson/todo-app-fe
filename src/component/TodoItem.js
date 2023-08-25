@@ -1,12 +1,20 @@
 import "./TodoItem.css";
 
 const TodoItem = (props) => {
-  const { isDone, content, createdAt } = props;
+  const { id, isDone, content, createdAt, onChangeCheckbox } = props;
+
+  const handleOnChangeCheckbox = () => {
+    onChangeCheckbox(id);
+  };
 
   return (
     <div className="TodoItem">
       <div className="checkbox_col">
-        <input type="checkbox" checked={isDone} onChange={() => {}} />
+        <input
+          type="checkbox"
+          checked={isDone}
+          onChange={handleOnChangeCheckbox}
+        />
       </div>
       <div className="title_col">{content}</div>
       <div className="date_col">{new Date(createdAt).toLocaleDateString()}</div>
