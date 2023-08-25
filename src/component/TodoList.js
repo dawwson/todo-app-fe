@@ -2,7 +2,9 @@ import { useState } from "react";
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
 
-const TodoList = ({ items, onChangeCheckbox }) => {
+const TodoList = (props) => {
+  const { items, onChangeCheckbox, onDelete } = props;
+
   const [search, setSearch] = useState("");
 
   const handleOnChangeSearch = (e) => {
@@ -33,6 +35,7 @@ const TodoList = ({ items, onChangeCheckbox }) => {
             key={item.id}
             {...item}
             onChangeCheckbox={onChangeCheckbox}
+            onClickDelete={onDelete}
           />
         ))}
       </div>

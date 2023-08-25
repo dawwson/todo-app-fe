@@ -26,7 +26,7 @@ const mockData = [
 ];
 
 function App() {
-  const [todos, setTodo] = useState(mockData);
+  const [todos, setTodos] = useState(mockData);
   const idRef = useRef(4);
 
   const handleOnCreate = (content) => {
@@ -37,7 +37,7 @@ function App() {
       createdAt: new Date().getTime(),
     };
 
-    setTodo([...todos, newItem]);
+    setTodos([...todos, newItem]);
     idRef.current += 1;
   };
 
@@ -48,14 +48,23 @@ function App() {
       }
       return todo;
     });
-    setTodo(updatedTodo);
+    setTodos(updatedTodo);
+  };
+
+  const handleOnDelete = (targetId) => {
+    const updatedTodo = todos.filter((todo) => todo.id !== targetId);
+    setTodos(updatedTodo);
   };
 
   return (
     <div className="App">
       <Header />
       <TodoEditor onCreate={handleOnCreate} />
-      <TodoList items={todos} onChangeCheckbox={handleOnChangeCheckbox} />
+      <TodoList
+        items={todos}
+        onChangeCheckbox={handleOnChangeCheckbox}
+        onDelete={handleOnDelete}
+      />
     </div>
   );
 }
