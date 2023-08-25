@@ -12,7 +12,10 @@ const TodoList = ({ items }) => {
   const getSearchResult = () => {
     return search === ""
       ? items
-      : items.filter((item) => item.content.includes(search));
+      : items.filter((item) =>
+          // 대소문자 구문
+          item.content.toLowerCase().includes(search.toLowerCase())
+        );
   };
 
   return (
