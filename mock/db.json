@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "isDone": true,
+      "content": "포트폴리오 만들기",
+      "createdAt": 1693054572327
+    },
+    {
+      "id": 2,
+      "isDone": false,
+      "content": "블로그 글 쓰기",
+      "createdAt": 1693054572327
+    },
+    {
+      "id": 3,
+      "isDone": false,
+      "content": "Spring 강의 듣기",
+      "createdAt": 1693054572327
+    }
+  ]
+}
