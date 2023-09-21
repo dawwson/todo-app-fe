@@ -1,50 +1,35 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
 
+const baseUrl = "http://localhost:8080/api/v1";
+
 // TODO: 상태 코드에 따른 예외처리
 function App() {
   const [todos, setTodos] = useState([]);
-  const idRef = useRef(4);
 
-  console.log(todos);
+  console.log(todos); // 나중에 삭제
 
   const fetchData = async () => {
-    const res = await fetch("http://localhost:4000/todos");
-    const jsonData = await res.json();
-    setTodos(jsonData);
+    const res = await fetch(`${baseUrl}/todos`);
+    const { data } = await res.json();
+    setTodos([...data]);
   };
 
   const handleOnCreate = async (content) => {
-    const newTodo = {
-      id: idRef.current,
-      isDone: false,
-      content,
-      createdAt: new Date().getTime(),
-    };
-    // setTodos([...todos, newTodo]);
-    await fetch("http://localhost:4000/todos", {
+    await fetch(`${baseUrl}/todos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newTodo),
+      body: JSON.stringify({ content }),
     });
     await fetchData();
-    idRef.current += 1;
   };
 
   const handleOnChangeCheckbox = async (targetId) => {
-    // const updatedTodo = todos.map((todo) => {
-    //   if (todo.id === targetId) {
-    //     return { ...todo, isDone: !todo.isDone };
-    //   }
-    //   return todo;
-    // });
-    // setTodos(updatedTodo);
-
     const todoToUpdate = todos.find((todo) => todo.id === targetId);
-    await fetch(`http://localhost:4000/todos/${targetId}`, {
+    await fetch(`${baseUrl}/todos/${targetId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ isDone: !todoToUpdate.isDone }),
@@ -53,9 +38,7 @@ function App() {
   };
 
   const handleOnDelete = async (targetId) => {
-    // const updatedTodo = todos.filter((todo) => todo.id !== targetId);
-    // setTodos(updatedTodo);
-    await fetch(`http://localhost:4000/todos/${targetId}`, {
+    await fetch(`${baseUrl}/todos/${targetId}`, {
       method: "DELETE",
     });
     await fetchData();
