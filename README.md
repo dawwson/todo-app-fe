@@ -75,3 +75,7 @@ src
 > Atom : 더 이상 쪼갤 수 없는 디자인의 최소 단위  
 > Molecule : 최소 한 가지 기능을 수행하는 atom의 조합  
 > Organism : Molecule과 Atom을 조합하여 만들며, 사용자에게 의미와 역할이 존재하는 단위
+
+#### 참고
+
+[https://yozm.wishket.com/magazine/detail/1531/](https://yozm.wishket.com/magazine/detail/1531/)
