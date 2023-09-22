@@ -47,3 +47,31 @@
 > Rename : 파일/폴더 이름 수정 및 위치 변경  
 > Remove : 파일 삭제  
 > Test : 테스트 코드 추가 및 수정
+
+<br>
+
+## 🌳 프로젝트 폴더 구조
+
+```
+src
+├── App.js
+├── components
+│   ├── atoms
+│   ├── molecules
+│   │   └── TodoItem
+│   └── organisms
+│       ├── BasicModal
+│       ├── Header
+│       ├── TodoEditor
+│       └── TodoList
+├── index.css
+├── index.js
+└── pages
+    ├── Login
+    ├── Main
+    └── NotFound
+```
+
+> Atom : 더 이상 쪼갤 수 없는 디자인의 최소 단위  
+> Molecule : 최소 한 가지 기능을 수행하는 atom의 조합  
+> Organism : Molecule과 Atom을 조합하여 만들며, 사용자에게 의미와 역할이 존재하는 단위
