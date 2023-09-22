@@ -3,19 +3,29 @@ import "./App.css";
 import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
+import BasicModal from "./component/organisms/BasicModal";
 
 const baseUrl = "http://localhost:8080/api/v1";
 
 // TODO: 상태 코드에 따른 예외처리
 function App() {
   const [todos, setTodos] = useState([]);
+  const [error, setError] = useState(false);
 
   console.log(todos); // 나중에 삭제
 
   const fetchData = async () => {
-    const res = await fetch(`${baseUrl}/todos`);
-    const { data } = await res.json();
-    setTodos([...data]);
+    try {
+      const response = await fetch(`${baseUrl}/todos`);
+
+      const { code, data } = await response.json();
+
+      if (code === 200) {
+        return setTodos([...data]);
+      }
+    } catch (error) {
+      setError(true);
+    }
   };
 
   const handleOnCreate = async (content) => {
@@ -47,6 +57,10 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (error) {
+    return <BasicModal />;
+  }
 
   return (
     <div className="App">
