@@ -1,4 +1,4 @@
-import "./TodoItem.css";
+import "./style.css";
 
 const TodoItem = (props) => {
   const { id, isDone, content, createdAt, onChangeCheckbox, onClickDelete } =

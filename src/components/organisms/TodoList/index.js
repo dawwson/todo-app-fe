@@ -1,6 +1,6 @@
 import { useState } from "react";
-import TodoItem from "./TodoItem";
-import "./TodoList.css";
+import TodoItem from "../../molecules/TodoItem";
+import "./style.css";
 
 const TodoList = (props) => {
   const { items, onChangeCheckbox, onDelete } = props;

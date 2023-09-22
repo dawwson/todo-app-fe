@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import Header from "../../component/Header";
-import TodoEditor from "../../component/TodoEditor";
-import TodoList from "../../component/TodoList";
-import BasicModal from "../../component/organisms/BasicModal";
+import Header from "../../components/organisms/Header";
+import TodoEditor from "../../components/organisms/TodoEditor";
+import TodoList from "../../components/organisms/TodoList";
+import BasicModal from "../../components/organisms/BasicModal";
 
 const baseUrl = "http://localhost:8080/api/v1";
 
